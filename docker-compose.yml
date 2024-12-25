@@ -1,0 +1,46 @@
+version: "3.8"
+
+networks:
+  scrapoxy-splash-network:
+    name: "scrapoxy-splash-network"
+    driver: bridge
+
+volumes:
+  pip-cache:
+    name: "pip-cache"
+
+services:
+  scrapoxy:
+    image: fabienvauchelles/scrapoxy:latest
+    container_name: scrapoxy
+    hostname: scrapoxy.local
+    ports:
+      - "8888:8888" # Scrapoxy API
+      - "8890:8890" # Scrapoxy Web UI
+    environment:
+      AUTH_LOCAL_USERNAME: admin
+      AUTH_LOCAL_PASSWORD: password
+      BACKEND_JWT_SECRET: secret1
+      FRONTEND_JWT_SECRET: secret2
+      STORAGE_FILE_FILENAME: /scrapoxy.json
+    restart: unless-stopped
+    volumes:
+      - ./scrapoxy.json:/scrapoxy.json # Persistent configuration
+    networks:
+      - scrapoxy-splash-network
+
+  splash:
+    image: scrapinghub/splash:latest
+    container_name: splash
+    hostname: splash.local
+    ports:
+      - "8050:8050" # Splash HTTP API
+    environment:
+      # Optionally configure Splash settings
+      SPLASH_MAX_TIMEOUT: 3600
+      SPLASH_SLOT_POLICY: fair
+      ENABLE_ACCESS_LOG: 1
+      ENABLE_PROXY_LOG: 1
+    restart: unless-stopped
+    networks:
+      - scrapoxy-splash-network

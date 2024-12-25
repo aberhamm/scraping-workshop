@@ -108,3 +108,6 @@ venv.bak/
 
 # Data
 results.csv
+
+scrapoxy.json
+scrapoxy/

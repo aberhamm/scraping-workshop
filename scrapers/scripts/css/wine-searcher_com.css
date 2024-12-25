@@ -1,0 +1,35 @@
+body {
+    background-color: blue;
+}
+
+.cookie-notice {
+    display: none !important;
+}
+.tab-info {
+    display: none !important;
+}
+.tab-content #tab-info.tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+.tab-content .tab-pane {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.tab-content > .active {
+    display: none;
+}
+
+.tab-content > .tab-pane {
+    display: block;
+}
+
+.fade:not(.show) {
+    opacity: 1;
+}
+.fade.show {
+    opacity: 0 !important;
+    display: none !important;
+}

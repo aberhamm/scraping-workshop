@@ -2,3 +2,7 @@ pycryptodome==3.20.0
 scrapoxy==2.0.2
 Scrapy==2.11.2
 scrapy_playwright
+playwright-stealth==1.0.6
+scrapy-splash==0.9.0
+six==1.16.0
+watchdog
