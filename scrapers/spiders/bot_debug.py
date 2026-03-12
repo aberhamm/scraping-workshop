@@ -54,9 +54,9 @@ class BotDebugSpider(scrapy.Spider):
     ]
     start_urls = [
         # "https://deviceandbrowserinfo.com/info_device",
-        # "https://arh.antoinevastel.com/bots/areyouheadless",
+        "https://arh.antoinevastel.com/bots/areyouheadless",
         # "https://arh.antoinevastel.com/bots/",
-        "https://www.wine-searcher.com/find/de+pibarnon+bandol+provence+france",
+        # "https://www.wine-searcher.com/find/de+pibarnon+bandol+provence+france",
     ]
 
     custom_settings = {
